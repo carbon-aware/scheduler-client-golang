@@ -3,8 +3,8 @@ package respjson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/carbonaware-go/internal/apijson"
-	rj "github.com/stainless-sdks/carbonaware-go/packages/respjson"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
+	rj "github.com/carbon-aware/scheduler-client-golang/packages/respjson"
 	"reflect"
 	"testing"
 )

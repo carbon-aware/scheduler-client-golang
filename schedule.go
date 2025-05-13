@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/stainless-sdks/carbonaware-go/internal/apijson"
-	"github.com/stainless-sdks/carbonaware-go/internal/requestconfig"
-	"github.com/stainless-sdks/carbonaware-go/option"
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
-	"github.com/stainless-sdks/carbonaware-go/packages/respjson"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
+	"github.com/carbon-aware/scheduler-client-golang/internal/requestconfig"
+	"github.com/carbon-aware/scheduler-client-golang/option"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/packages/respjson"
 )
 
 // ScheduleService contains methods and other services that help with interacting

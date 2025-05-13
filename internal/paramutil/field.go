@@ -1,8 +1,8 @@
 package paramutil
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
-	"github.com/stainless-sdks/carbonaware-go/packages/respjson"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/packages/respjson"
 )
 
 func AddrIfPresent[T comparable](v param.Opt[T]) *T {

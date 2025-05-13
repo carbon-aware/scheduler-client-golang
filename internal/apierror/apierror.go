@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"net/http/httputil"
 
-	"github.com/stainless-sdks/carbonaware-go/internal/apijson"
-	"github.com/stainless-sdks/carbonaware-go/packages/respjson"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
+	"github.com/carbon-aware/scheduler-client-golang/packages/respjson"
 )
 
 // Error represents an error that originates from the API, i.e. when a request is

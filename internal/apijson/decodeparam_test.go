@@ -3,8 +3,8 @@ package apijson_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/stainless-sdks/carbonaware-go/internal/apijson"
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
 	"reflect"
 	"testing"
 )

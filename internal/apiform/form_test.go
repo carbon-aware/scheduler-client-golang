@@ -2,7 +2,7 @@ package apiform
 
 import (
 	"bytes"
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
 	"io"
 	"mime/multipart"
 	"strings"

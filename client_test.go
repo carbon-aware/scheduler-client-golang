@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stainless-sdks/carbonaware-go"
-	"github.com/stainless-sdks/carbonaware-go/internal"
-	"github.com/stainless-sdks/carbonaware-go/option"
+	"github.com/carbon-aware/scheduler-client-golang"
+	"github.com/carbon-aware/scheduler-client-golang/internal"
+	"github.com/carbon-aware/scheduler-client-golang/option"
 )
 
 type closureTransport struct {

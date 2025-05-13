@@ -1,7 +1,7 @@
 package sentinel
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/internal/encoding/json/shims"
+	"github.com/carbon-aware/scheduler-client-golang/internal/encoding/json/shims"
 	"reflect"
 	"sync"
 )

@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	shimjson "github.com/stainless-sdks/carbonaware-go/internal/encoding/json"
+	shimjson "github.com/carbon-aware/scheduler-client-golang/internal/encoding/json"
 
 	"github.com/tidwall/sjson"
 )

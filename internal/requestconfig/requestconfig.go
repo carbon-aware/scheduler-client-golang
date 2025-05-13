@@ -18,10 +18,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/stainless-sdks/carbonaware-go/internal"
-	"github.com/stainless-sdks/carbonaware-go/internal/apierror"
-	"github.com/stainless-sdks/carbonaware-go/internal/apiform"
-	"github.com/stainless-sdks/carbonaware-go/internal/apiquery"
+	"github.com/carbon-aware/scheduler-client-golang/internal"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apierror"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apiform"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apiquery"
 )
 
 func getDefaultHeaders() map[string]string {
