@@ -1,7 +1,7 @@
 package sentinel_test
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/internal/encoding/json/sentinel"
+	"github.com/carbon-aware/scheduler-client-golang/internal/encoding/json/sentinel"
 	"reflect"
 	"slices"
 	"testing"

@@ -1,7 +1,7 @@
 package apijson
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/packages/respjson"
+	"github.com/carbon-aware/scheduler-client-golang/packages/respjson"
 	"reflect"
 )
 

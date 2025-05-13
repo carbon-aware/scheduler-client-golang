@@ -6,8 +6,8 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/stainless-sdks/carbonaware-go/internal/requestconfig"
-	"github.com/stainless-sdks/carbonaware-go/option"
+	"github.com/carbon-aware/scheduler-client-golang/internal/requestconfig"
+	"github.com/carbon-aware/scheduler-client-golang/option"
 )
 
 // HealthService contains methods and other services that help with interacting

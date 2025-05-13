@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
 )
 
 var encoders sync.Map // map[reflect.Type]encoderFunc
