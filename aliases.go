@@ -3,8 +3,8 @@
 package carbonaware
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/internal/apierror"
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/internal/apierror"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
 )
 
 // aliased to make [param.APIUnion] private when embedding

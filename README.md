@@ -1,6 +1,6 @@
 # Carbonaware Scheduler Go API Library
 
-<a href="https://pkg.go.dev/github.com/stainless-sdks/carbonaware-go"><img src="https://pkg.go.dev/badge/github.com/stainless-sdks/carbonaware-go.svg" alt="Go Reference"></a>
+<a href="https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang"><img src="https://pkg.go.dev/badge/github.com/carbon-aware/scheduler-client-golang.svg" alt="Go Reference"></a>
 
 The Carbonaware Scheduler Go library provides convenient access to the Carbonaware Scheduler REST API
 from applications written in Go.
@@ -9,17 +9,25 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
 
+<!-- x-release-please-start-version -->
+
 ```go
 import (
-	"github.com/stainless-sdks/carbonaware-go" // imported as carbonaware
+	"github.com/carbon-aware/scheduler-client-golang" // imported as carbonaware
 )
 ```
 
+<!-- x-release-please-end -->
+
 Or to pin the version:
 
+<!-- x-release-please-start-version -->
+
 ```sh
-go get -u 'github.com/stainless-sdks/carbonaware-go@v0.0.1-alpha.0'
+go get -u 'github.com/carbon-aware/scheduler-client-golang@v0.1.0-alpha.1'
 ```
+
+<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -37,7 +45,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/stainless-sdks/carbonaware-go"
+	"github.com/carbon-aware/scheduler-client-golang"
 )
 
 func main() {
@@ -270,7 +278,7 @@ client.Schedule.New(context.TODO(), ...,
 )
 ```
 
-See the [full list of request options](https://pkg.go.dev/github.com/stainless-sdks/carbonaware-go/option).
+See the [full list of request options](https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang/option).
 
 ### Pagination
 
@@ -516,7 +524,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/carbonaware-go/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/carbon-aware/scheduler-client-golang/issues) with questions, bugs, or suggestions.
 
 ## Contributing
 

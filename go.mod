@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/carbonaware-go
+module github.com/carbon-aware/scheduler-client-golang
 
 go 1.21
 

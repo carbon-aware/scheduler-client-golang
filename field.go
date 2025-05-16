@@ -1,7 +1,7 @@
 package carbonaware
 
 import (
-	"github.com/stainless-sdks/carbonaware-go/packages/param"
+	"github.com/carbon-aware/scheduler-client-golang/packages/param"
 	"io"
 	"time"
 )

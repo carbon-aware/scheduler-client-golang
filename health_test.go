@@ -8,9 +8,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/stainless-sdks/carbonaware-go"
-	"github.com/stainless-sdks/carbonaware-go/internal/testutil"
-	"github.com/stainless-sdks/carbonaware-go/option"
+	"github.com/carbon-aware/scheduler-client-golang"
+	"github.com/carbon-aware/scheduler-client-golang/internal/testutil"
+	"github.com/carbon-aware/scheduler-client-golang/option"
 )
 
 func TestHealthCheck(t *testing.T) {

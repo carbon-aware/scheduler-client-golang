@@ -3,7 +3,7 @@ package param
 import (
 	"encoding/json"
 	"fmt"
-	shimjson "github.com/stainless-sdks/carbonaware-go/internal/encoding/json"
+	shimjson "github.com/carbon-aware/scheduler-client-golang/internal/encoding/json"
 	"time"
 )
 
