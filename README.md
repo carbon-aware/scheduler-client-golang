@@ -2,7 +2,7 @@
 
 <a href="https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang"><img src="https://pkg.go.dev/badge/github.com/carbon-aware/scheduler-client-golang.svg" alt="Go Reference"></a>
 
-The Carbonaware Scheduler Go library provides convenient access to the Carbonaware Scheduler REST API
+The Carbonaware Scheduler Go library provides convenient access to the [Carbonaware Scheduler REST API](https://docs.carbonaware.dev/scheduler/)
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).
