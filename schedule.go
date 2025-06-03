@@ -42,15 +42,28 @@ func (r *ScheduleService) New(ctx context.Context, body ScheduleNewParams, opts 
 }
 
 type CloudZone struct {
-	// Any of "aws", "gcp", "azure".
+	// Any of "aws", "gcp", "azure", "ovh".
 	Provider CloudZoneProvider `json:"provider,required"`
-	// Any of "us-east-1", "us-west-1", "eu-central-1", "ap-southeast-2",
-	// "us-central1", "eastus", "eastus2", "southcentralus", "westus2", "westus3",
-	// "northeurope", "swedencentral", "uksouth", "westeurope", "centralus",
-	// "francecentral", "germanywestcentral", "italynorth", "norwayeast",
-	// "polandcentral", "eastus2euap", "eastusstg", "northcentralus", "westus",
-	// "centraluseuap", "westcentralus", "francesouth", "germanynorth", "norwaywest",
-	// "ukwest".
+	// Any of "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2",
+	// "ap-northeast-3", "ap-south-1", "ap-south-2", "ap-southeast-2",
+	// "ap-southeast-3", "ap-southeast-4", "ap-southeast-5", "ap-southeast-7",
+	// "ca-central-1", "ca-west-1", "eu-central-1", "eu-central-2", "eu-north-1",
+	// "eu-south-1", "eu-south-2", "eu-west-1", "eu-west-2", "eu-west-3",
+	// "il-central-1", "me-central-1", "mx-central-1", "sa-east-1", "us-east-1",
+	// "us-east-2", "us-west-1", "us-west-2", "asia-east1", "asia-northeast1",
+	// "asia-southeast1", "europe-north1", "europe-west1", "europe-west3",
+	// "europe-west4", "northamerica-northeast2", "southamerica-west1", "us-central1",
+	// "us-east1", "us-east4", "us-west1", "us-west2", "australiacentral",
+	// "australiaeast", "australiasoutheast", "brazilsouth", "canadacentral",
+	// "canadaeast", "centralindia", "centralus", "chinaeast2", "chinanorth",
+	// "chinanorth2", "chinanorth3", "eastasia", "eastus", "eastus2", "francecentral",
+	// "germanywestcentral", "indonesiacentral", "israelcentral", "italynorth",
+	// "japaneast", "japanwest", "koreacentral", "mexicocentral", "newzealandnorth",
+	// "northcentralus", "northeurope", "norwayeast", "polandcentral",
+	// "southafricanorth", "southcentralus", "southindia", "spaincentral",
+	// "swedencentral", "switzerlandnorth", "uaenorth", "uksouth", "ukwest",
+	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "fr-strasbourg",
+	// "pl-warsaw".
 	Region CloudZoneRegion `json:"region,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -82,54 +95,127 @@ const (
 	CloudZoneProviderAws   CloudZoneProvider = "aws"
 	CloudZoneProviderGcp   CloudZoneProvider = "gcp"
 	CloudZoneProviderAzure CloudZoneProvider = "azure"
+	CloudZoneProviderOvh   CloudZoneProvider = "ovh"
 )
 
 type CloudZoneRegion string
 
 const (
-	CloudZoneRegionUsEast1            CloudZoneRegion = "us-east-1"
-	CloudZoneRegionUsWest1            CloudZoneRegion = "us-west-1"
-	CloudZoneRegionEuCentral1         CloudZoneRegion = "eu-central-1"
-	CloudZoneRegionApSoutheast2       CloudZoneRegion = "ap-southeast-2"
-	CloudZoneRegionUsCentral1         CloudZoneRegion = "us-central1"
-	CloudZoneRegionEastus             CloudZoneRegion = "eastus"
-	CloudZoneRegionEastus2            CloudZoneRegion = "eastus2"
-	CloudZoneRegionSouthcentralus     CloudZoneRegion = "southcentralus"
-	CloudZoneRegionWestus2            CloudZoneRegion = "westus2"
-	CloudZoneRegionWestus3            CloudZoneRegion = "westus3"
-	CloudZoneRegionNortheurope        CloudZoneRegion = "northeurope"
-	CloudZoneRegionSwedencentral      CloudZoneRegion = "swedencentral"
-	CloudZoneRegionUksouth            CloudZoneRegion = "uksouth"
-	CloudZoneRegionWesteurope         CloudZoneRegion = "westeurope"
-	CloudZoneRegionCentralus          CloudZoneRegion = "centralus"
-	CloudZoneRegionFrancecentral      CloudZoneRegion = "francecentral"
-	CloudZoneRegionGermanywestcentral CloudZoneRegion = "germanywestcentral"
-	CloudZoneRegionItalynorth         CloudZoneRegion = "italynorth"
-	CloudZoneRegionNorwayeast         CloudZoneRegion = "norwayeast"
-	CloudZoneRegionPolandcentral      CloudZoneRegion = "polandcentral"
-	CloudZoneRegionEastus2euap        CloudZoneRegion = "eastus2euap"
-	CloudZoneRegionEastusstg          CloudZoneRegion = "eastusstg"
-	CloudZoneRegionNorthcentralus     CloudZoneRegion = "northcentralus"
-	CloudZoneRegionWestus             CloudZoneRegion = "westus"
-	CloudZoneRegionCentraluseuap      CloudZoneRegion = "centraluseuap"
-	CloudZoneRegionWestcentralus      CloudZoneRegion = "westcentralus"
-	CloudZoneRegionFrancesouth        CloudZoneRegion = "francesouth"
-	CloudZoneRegionGermanynorth       CloudZoneRegion = "germanynorth"
-	CloudZoneRegionNorwaywest         CloudZoneRegion = "norwaywest"
-	CloudZoneRegionUkwest             CloudZoneRegion = "ukwest"
+	CloudZoneRegionAfSouth1               CloudZoneRegion = "af-south-1"
+	CloudZoneRegionApEast1                CloudZoneRegion = "ap-east-1"
+	CloudZoneRegionApNortheast1           CloudZoneRegion = "ap-northeast-1"
+	CloudZoneRegionApNortheast2           CloudZoneRegion = "ap-northeast-2"
+	CloudZoneRegionApNortheast3           CloudZoneRegion = "ap-northeast-3"
+	CloudZoneRegionApSouth1               CloudZoneRegion = "ap-south-1"
+	CloudZoneRegionApSouth2               CloudZoneRegion = "ap-south-2"
+	CloudZoneRegionApSoutheast2           CloudZoneRegion = "ap-southeast-2"
+	CloudZoneRegionApSoutheast3           CloudZoneRegion = "ap-southeast-3"
+	CloudZoneRegionApSoutheast4           CloudZoneRegion = "ap-southeast-4"
+	CloudZoneRegionApSoutheast5           CloudZoneRegion = "ap-southeast-5"
+	CloudZoneRegionApSoutheast7           CloudZoneRegion = "ap-southeast-7"
+	CloudZoneRegionCaCentral1             CloudZoneRegion = "ca-central-1"
+	CloudZoneRegionCaWest1                CloudZoneRegion = "ca-west-1"
+	CloudZoneRegionEuCentral1             CloudZoneRegion = "eu-central-1"
+	CloudZoneRegionEuCentral2             CloudZoneRegion = "eu-central-2"
+	CloudZoneRegionEuNorth1               CloudZoneRegion = "eu-north-1"
+	CloudZoneRegionEuSouth1               CloudZoneRegion = "eu-south-1"
+	CloudZoneRegionEuSouth2               CloudZoneRegion = "eu-south-2"
+	CloudZoneRegionEuWest1                CloudZoneRegion = "eu-west-1"
+	CloudZoneRegionEuWest2                CloudZoneRegion = "eu-west-2"
+	CloudZoneRegionEuWest3                CloudZoneRegion = "eu-west-3"
+	CloudZoneRegionIlCentral1             CloudZoneRegion = "il-central-1"
+	CloudZoneRegionMeCentral1             CloudZoneRegion = "me-central-1"
+	CloudZoneRegionMxCentral1             CloudZoneRegion = "mx-central-1"
+	CloudZoneRegionSaEast1                CloudZoneRegion = "sa-east-1"
+	CloudZoneRegionUsEast1KebabCase       CloudZoneRegion = "us-east-1"
+	CloudZoneRegionUsEast2                CloudZoneRegion = "us-east-2"
+	CloudZoneRegionUsWest1KebabCase       CloudZoneRegion = "us-west-1"
+	CloudZoneRegionUsWest2KebabCase       CloudZoneRegion = "us-west-2"
+	CloudZoneRegionAsiaEast1              CloudZoneRegion = "asia-east1"
+	CloudZoneRegionAsiaNortheast1         CloudZoneRegion = "asia-northeast1"
+	CloudZoneRegionAsiaSoutheast1         CloudZoneRegion = "asia-southeast1"
+	CloudZoneRegionEuropeNorth1           CloudZoneRegion = "europe-north1"
+	CloudZoneRegionEuropeWest1            CloudZoneRegion = "europe-west1"
+	CloudZoneRegionEuropeWest3            CloudZoneRegion = "europe-west3"
+	CloudZoneRegionEuropeWest4            CloudZoneRegion = "europe-west4"
+	CloudZoneRegionNorthamericaNortheast2 CloudZoneRegion = "northamerica-northeast2"
+	CloudZoneRegionSouthamericaWest1      CloudZoneRegion = "southamerica-west1"
+	CloudZoneRegionUsCentral1             CloudZoneRegion = "us-central1"
+	CloudZoneRegionUsEast1                CloudZoneRegion = "us-east1"
+	CloudZoneRegionUsEast4                CloudZoneRegion = "us-east4"
+	CloudZoneRegionUsWest1                CloudZoneRegion = "us-west1"
+	CloudZoneRegionUsWest2                CloudZoneRegion = "us-west2"
+	CloudZoneRegionAustraliacentral       CloudZoneRegion = "australiacentral"
+	CloudZoneRegionAustraliaeast          CloudZoneRegion = "australiaeast"
+	CloudZoneRegionAustraliasoutheast     CloudZoneRegion = "australiasoutheast"
+	CloudZoneRegionBrazilsouth            CloudZoneRegion = "brazilsouth"
+	CloudZoneRegionCanadacentral          CloudZoneRegion = "canadacentral"
+	CloudZoneRegionCanadaeast             CloudZoneRegion = "canadaeast"
+	CloudZoneRegionCentralindia           CloudZoneRegion = "centralindia"
+	CloudZoneRegionCentralus              CloudZoneRegion = "centralus"
+	CloudZoneRegionChinaeast2             CloudZoneRegion = "chinaeast2"
+	CloudZoneRegionChinanorth             CloudZoneRegion = "chinanorth"
+	CloudZoneRegionChinanorth2            CloudZoneRegion = "chinanorth2"
+	CloudZoneRegionChinanorth3            CloudZoneRegion = "chinanorth3"
+	CloudZoneRegionEastasia               CloudZoneRegion = "eastasia"
+	CloudZoneRegionEastus                 CloudZoneRegion = "eastus"
+	CloudZoneRegionEastus2                CloudZoneRegion = "eastus2"
+	CloudZoneRegionFrancecentral          CloudZoneRegion = "francecentral"
+	CloudZoneRegionGermanywestcentral     CloudZoneRegion = "germanywestcentral"
+	CloudZoneRegionIndonesiacentral       CloudZoneRegion = "indonesiacentral"
+	CloudZoneRegionIsraelcentral          CloudZoneRegion = "israelcentral"
+	CloudZoneRegionItalynorth             CloudZoneRegion = "italynorth"
+	CloudZoneRegionJapaneast              CloudZoneRegion = "japaneast"
+	CloudZoneRegionJapanwest              CloudZoneRegion = "japanwest"
+	CloudZoneRegionKoreacentral           CloudZoneRegion = "koreacentral"
+	CloudZoneRegionMexicocentral          CloudZoneRegion = "mexicocentral"
+	CloudZoneRegionNewzealandnorth        CloudZoneRegion = "newzealandnorth"
+	CloudZoneRegionNorthcentralus         CloudZoneRegion = "northcentralus"
+	CloudZoneRegionNortheurope            CloudZoneRegion = "northeurope"
+	CloudZoneRegionNorwayeast             CloudZoneRegion = "norwayeast"
+	CloudZoneRegionPolandcentral          CloudZoneRegion = "polandcentral"
+	CloudZoneRegionSouthafricanorth       CloudZoneRegion = "southafricanorth"
+	CloudZoneRegionSouthcentralus         CloudZoneRegion = "southcentralus"
+	CloudZoneRegionSouthindia             CloudZoneRegion = "southindia"
+	CloudZoneRegionSpaincentral           CloudZoneRegion = "spaincentral"
+	CloudZoneRegionSwedencentral          CloudZoneRegion = "swedencentral"
+	CloudZoneRegionSwitzerlandnorth       CloudZoneRegion = "switzerlandnorth"
+	CloudZoneRegionUaenorth               CloudZoneRegion = "uaenorth"
+	CloudZoneRegionUksouth                CloudZoneRegion = "uksouth"
+	CloudZoneRegionUkwest                 CloudZoneRegion = "ukwest"
+	CloudZoneRegionWestcentralus          CloudZoneRegion = "westcentralus"
+	CloudZoneRegionWesteurope             CloudZoneRegion = "westeurope"
+	CloudZoneRegionWestus                 CloudZoneRegion = "westus"
+	CloudZoneRegionWestus2                CloudZoneRegion = "westus2"
+	CloudZoneRegionWestus3                CloudZoneRegion = "westus3"
+	CloudZoneRegionFrStrasbourg           CloudZoneRegion = "fr-strasbourg"
+	CloudZoneRegionPlWarsaw               CloudZoneRegion = "pl-warsaw"
 )
 
 // The properties Provider, Region are required.
 type CloudZoneParam struct {
-	// Any of "aws", "gcp", "azure".
+	// Any of "aws", "gcp", "azure", "ovh".
 	Provider CloudZoneProvider `json:"provider,omitzero,required"`
-	// Any of "us-east-1", "us-west-1", "eu-central-1", "ap-southeast-2",
-	// "us-central1", "eastus", "eastus2", "southcentralus", "westus2", "westus3",
-	// "northeurope", "swedencentral", "uksouth", "westeurope", "centralus",
-	// "francecentral", "germanywestcentral", "italynorth", "norwayeast",
-	// "polandcentral", "eastus2euap", "eastusstg", "northcentralus", "westus",
-	// "centraluseuap", "westcentralus", "francesouth", "germanynorth", "norwaywest",
-	// "ukwest".
+	// Any of "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2",
+	// "ap-northeast-3", "ap-south-1", "ap-south-2", "ap-southeast-2",
+	// "ap-southeast-3", "ap-southeast-4", "ap-southeast-5", "ap-southeast-7",
+	// "ca-central-1", "ca-west-1", "eu-central-1", "eu-central-2", "eu-north-1",
+	// "eu-south-1", "eu-south-2", "eu-west-1", "eu-west-2", "eu-west-3",
+	// "il-central-1", "me-central-1", "mx-central-1", "sa-east-1", "us-east-1",
+	// "us-east-2", "us-west-1", "us-west-2", "asia-east1", "asia-northeast1",
+	// "asia-southeast1", "europe-north1", "europe-west1", "europe-west3",
+	// "europe-west4", "northamerica-northeast2", "southamerica-west1", "us-central1",
+	// "us-east1", "us-east4", "us-west1", "us-west2", "australiacentral",
+	// "australiaeast", "australiasoutheast", "brazilsouth", "canadacentral",
+	// "canadaeast", "centralindia", "centralus", "chinaeast2", "chinanorth",
+	// "chinanorth2", "chinanorth3", "eastasia", "eastus", "eastus2", "francecentral",
+	// "germanywestcentral", "indonesiacentral", "israelcentral", "italynorth",
+	// "japaneast", "japanwest", "koreacentral", "mexicocentral", "newzealandnorth",
+	// "northcentralus", "northeurope", "norwayeast", "polandcentral",
+	// "southafricanorth", "southcentralus", "southindia", "spaincentral",
+	// "swedencentral", "switzerlandnorth", "uaenorth", "uksouth", "ukwest",
+	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "fr-strasbourg",
+	// "pl-warsaw".
 	Region CloudZoneRegion `json:"region,omitzero,required"`
 	paramObj
 }

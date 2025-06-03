@@ -58,7 +58,7 @@ func main() {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err != nil {
@@ -307,7 +307,7 @@ _, err := client.Schedule.New(context.TODO(), carbonaware.ScheduleNewParams{
 	}},
 	Zones: []carbonaware.CloudZoneParam{{
 		Provider: carbonaware.CloudZoneProviderAws,
-		Region:   carbonaware.CloudZoneRegionUsEast1,
+		Region:   carbonaware.CloudZoneRegionAfSouth1,
 	}},
 })
 if err != nil {
@@ -344,7 +344,7 @@ client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	// This sets the per-retry timeout
@@ -390,7 +390,7 @@ client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	option.WithMaxRetries(5),
@@ -415,7 +415,7 @@ schedule, err := client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	option.WithResponseInto(&response),
