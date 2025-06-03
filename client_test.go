@@ -45,7 +45,7 @@ func TestUserAgentHeader(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if userAgent != fmt.Sprintf("CarbonawareScheduler/Go %s", internal.PackageVersion) {
@@ -78,7 +78,7 @@ func TestRetryAfter(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -122,7 +122,7 @@ func TestDeleteRetryCountHeader(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -161,7 +161,7 @@ func TestOverwriteRetryCountHeader(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -199,7 +199,7 @@ func TestRetryAfterMs(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -231,7 +231,7 @@ func TestContextCancel(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -260,7 +260,7 @@ func TestContextCancelDelay(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err == nil {
@@ -295,7 +295,7 @@ func TestContextDeadline(t *testing.T) {
 			}},
 			Zones: []carbonaware.CloudZoneParam{{
 				Provider: carbonaware.CloudZoneProviderAws,
-				Region:   carbonaware.CloudZoneRegionUsEast1,
+				Region:   carbonaware.CloudZoneRegionAfSouth1,
 			}},
 		})
 		if err == nil {

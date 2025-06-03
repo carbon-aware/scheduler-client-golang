@@ -34,7 +34,7 @@ func TestScheduleNewWithOptionalParams(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 		NumOptions: carbonaware.Int(0),
 	})
