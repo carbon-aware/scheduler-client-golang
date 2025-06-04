@@ -32,7 +32,7 @@ func TestUsage(t *testing.T) {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err != nil {

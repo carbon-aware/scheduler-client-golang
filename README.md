@@ -2,7 +2,7 @@
 
 <a href="https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang"><img src="https://pkg.go.dev/badge/github.com/carbon-aware/scheduler-client-golang.svg" alt="Go Reference"></a>
 
-The Carbonaware Scheduler Go library provides convenient access to the Carbonaware Scheduler REST API
+The Carbonaware Scheduler Go library provides convenient access to the [Carbonaware Scheduler REST API](https://docs.carbonaware.dev/scheduler/)
 from applications written in Go.
 
 It is generated with [Stainless](https://www.stainless.com/).
@@ -24,7 +24,7 @@ Or to pin the version:
 <!-- x-release-please-start-version -->
 
 ```sh
-go get -u 'github.com/carbon-aware/scheduler-client-golang@v0.1.0-alpha.1'
+go get -u 'github.com/carbon-aware/scheduler-client-golang@v0.1.0-alpha.2'
 ```
 
 <!-- x-release-please-end -->
@@ -58,7 +58,7 @@ func main() {
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	})
 	if err != nil {
@@ -307,7 +307,7 @@ _, err := client.Schedule.New(context.TODO(), carbonaware.ScheduleNewParams{
 	}},
 	Zones: []carbonaware.CloudZoneParam{{
 		Provider: carbonaware.CloudZoneProviderAws,
-		Region:   carbonaware.CloudZoneRegionUsEast1,
+		Region:   carbonaware.CloudZoneRegionAfSouth1,
 	}},
 })
 if err != nil {
@@ -344,7 +344,7 @@ client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	// This sets the per-retry timeout
@@ -390,7 +390,7 @@ client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	option.WithMaxRetries(5),
@@ -415,7 +415,7 @@ schedule, err := client.Schedule.New(
 		}},
 		Zones: []carbonaware.CloudZoneParam{{
 			Provider: carbonaware.CloudZoneProviderAws,
-			Region:   carbonaware.CloudZoneRegionUsEast1,
+			Region:   carbonaware.CloudZoneRegionAfSouth1,
 		}},
 	},
 	option.WithResponseInto(&response),
