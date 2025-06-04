@@ -4,6 +4,7 @@ package carbonaware
 
 import (
 	"context"
+	"encoding/json"
 	"net/http"
 	"time"
 
@@ -86,7 +87,7 @@ func (r *CloudZone) UnmarshalJSON(data []byte) error {
 // be used at the last possible moment before sending a request. Test for this with
 // CloudZoneParam.Overrides()
 func (r CloudZone) ToParam() CloudZoneParam {
-	return param.Override[CloudZoneParam](r.RawJSON())
+	return param.Override[CloudZoneParam](json.RawMessage(r.RawJSON()))
 }
 
 type CloudZoneProvider string
