@@ -63,8 +63,10 @@ type CloudZone struct {
 	// "northcentralus", "northeurope", "norwayeast", "polandcentral",
 	// "southafricanorth", "southcentralus", "southindia", "spaincentral",
 	// "swedencentral", "switzerlandnorth", "uaenorth", "uksouth", "ukwest",
-	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "fr-strasbourg",
-	// "pl-warsaw".
+	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "ca-beauharnois",
+	// "ca-toronto", "de-frankfurt", "fr-gravelines", "fr-paris", "fr-roubaix",
+	// "fr-strasbourg", "gb-london", "in-mumbai", "pl-warsaw", "sg-singapore",
+	// "us-hillsboro", "us-vint_hill".
 	Region CloudZoneRegion `json:"region,required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
@@ -189,8 +191,19 @@ const (
 	CloudZoneRegionWestus                 CloudZoneRegion = "westus"
 	CloudZoneRegionWestus2                CloudZoneRegion = "westus2"
 	CloudZoneRegionWestus3                CloudZoneRegion = "westus3"
+	CloudZoneRegionCaBeauharnois          CloudZoneRegion = "ca-beauharnois"
+	CloudZoneRegionCaToronto              CloudZoneRegion = "ca-toronto"
+	CloudZoneRegionDeFrankfurt            CloudZoneRegion = "de-frankfurt"
+	CloudZoneRegionFrGravelines           CloudZoneRegion = "fr-gravelines"
+	CloudZoneRegionFrParis                CloudZoneRegion = "fr-paris"
+	CloudZoneRegionFrRoubaix              CloudZoneRegion = "fr-roubaix"
 	CloudZoneRegionFrStrasbourg           CloudZoneRegion = "fr-strasbourg"
+	CloudZoneRegionGBLondon               CloudZoneRegion = "gb-london"
+	CloudZoneRegionInMumbai               CloudZoneRegion = "in-mumbai"
 	CloudZoneRegionPlWarsaw               CloudZoneRegion = "pl-warsaw"
+	CloudZoneRegionSgSingapore            CloudZoneRegion = "sg-singapore"
+	CloudZoneRegionUsHillsboro            CloudZoneRegion = "us-hillsboro"
+	CloudZoneRegionUsVintHill             CloudZoneRegion = "us-vint_hill"
 )
 
 // The properties Provider, Region are required.
@@ -215,8 +228,10 @@ type CloudZoneParam struct {
 	// "northcentralus", "northeurope", "norwayeast", "polandcentral",
 	// "southafricanorth", "southcentralus", "southindia", "spaincentral",
 	// "swedencentral", "switzerlandnorth", "uaenorth", "uksouth", "ukwest",
-	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "fr-strasbourg",
-	// "pl-warsaw".
+	// "westcentralus", "westeurope", "westus", "westus2", "westus3", "ca-beauharnois",
+	// "ca-toronto", "de-frankfurt", "fr-gravelines", "fr-paris", "fr-roubaix",
+	// "fr-strasbourg", "gb-london", "in-mumbai", "pl-warsaw", "sg-singapore",
+	// "us-hillsboro", "us-vint_hill".
 	Region CloudZoneRegion `json:"region,omitzero,required"`
 	paramObj
 }
