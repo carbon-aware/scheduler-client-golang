@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-07-11)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/carbon-aware/scheduler-client-golang/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([696f44f](https://github.com/carbon-aware/scheduler-client-golang/commit/696f44ff25de2b13e9edae473b351d936eb7f530))
+* **client:** add debug log helper ([c8c9064](https://github.com/carbon-aware/scheduler-client-golang/commit/c8c9064b5c90fa9e68d15c50d45a1bf3b2592fd0))
+* **client:** add escape hatch for null slice & maps ([8bd6c73](https://github.com/carbon-aware/scheduler-client-golang/commit/8bd6c737ce1a69b339cf45972e4194d54b6e03f2))
+
+
+### Bug Fixes
+
+* don't try to deserialize as json when ResponseBodyInto is []byte ([459ede2](https://github.com/carbon-aware/scheduler-client-golang/commit/459ede25be56cc7a8bef8c2032449446f9dee7dc))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([10f0892](https://github.com/carbon-aware/scheduler-client-golang/commit/10f0892a9f3c826deee121a1fbb9733f7438dcac))
+* **ci:** only run for pushes and fork pull requests ([aa10145](https://github.com/carbon-aware/scheduler-client-golang/commit/aa1014513d21315b7cd0a0ce701ce055675e3136))
+* fix documentation of null map ([45d2876](https://github.com/carbon-aware/scheduler-client-golang/commit/45d287660d873007119a6ef34c76ef080c66d33c))
+* **internal:** fix lint script for tests ([6f0e397](https://github.com/carbon-aware/scheduler-client-golang/commit/6f0e397907fe52409623ab6e24a5d5a1660108fb))
+* lint tests ([3bf9aa7](https://github.com/carbon-aware/scheduler-client-golang/commit/3bf9aa7248c2611ad5efb253009db2862d7f8fb5))
+* lint tests in subpackages ([d6cb41e](https://github.com/carbon-aware/scheduler-client-golang/commit/d6cb41e392a27f5d094e64df7b5441d5f053a7c3))
+
 ## 0.1.0-alpha.2 (2025-06-04)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/carbon-aware/scheduler-client-golang/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
