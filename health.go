@@ -5,6 +5,7 @@ package carbonaware
 import (
 	"context"
 	"net/http"
+	"slices"
 
 	"github.com/carbon-aware/scheduler-client-golang/internal/requestconfig"
 	"github.com/carbon-aware/scheduler-client-golang/option"
@@ -31,10 +32,10 @@ func NewHealthService(opts ...option.RequestOption) (r HealthService) {
 
 // Health
 func (r *HealthService) Check(ctx context.Context, opts ...option.RequestOption) (res *HealthCheckResponse, err error) {
-	opts = append(r.Options[:], opts...)
+	opts = slices.Concat(r.Options, opts)
 	path := "health"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type HealthCheckResponse map[string]string

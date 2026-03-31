@@ -5,6 +5,7 @@ package carbonaware
 import (
 	"context"
 	"net/http"
+	"slices"
 
 	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
 	"github.com/carbon-aware/scheduler-client-golang/internal/requestconfig"
@@ -33,14 +34,14 @@ func NewRegionService(opts ...option.RequestOption) (r RegionService) {
 
 // Returns list of available regions.
 func (r *RegionService) List(ctx context.Context, opts ...option.RequestOption) (res *RegionListResponse, err error) {
-	opts = append(r.Options[:], opts...)
+	opts = slices.Concat(r.Options, opts)
 	path := "v0/regions/"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }
 
 type RegionListResponse struct {
-	Regions []CloudZone `json:"regions,required"`
+	Regions []CloudZone `json:"regions" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Regions     respjson.Field
