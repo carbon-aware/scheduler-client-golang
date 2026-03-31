@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+	"slices"
 	"time"
 
 	"github.com/carbon-aware/scheduler-client-golang/internal/apijson"
@@ -36,15 +37,15 @@ func NewScheduleService(opts ...option.RequestOption) (r ScheduleService) {
 
 // Schedule
 func (r *ScheduleService) New(ctx context.Context, body ScheduleNewParams, opts ...option.RequestOption) (res *ScheduleNewResponse, err error) {
-	opts = append(r.Options[:], opts...)
+	opts = slices.Concat(r.Options, opts)
 	path := "v0/schedule/"
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodPost, path, body, &res, opts...)
-	return
+	return res, err
 }
 
 type CloudZone struct {
 	// Any of "aws", "gcp", "azure", "ovh".
-	Provider CloudZoneProvider `json:"provider,required"`
+	Provider CloudZoneProvider `json:"provider" api:"required"`
 	// Any of "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2",
 	// "ap-northeast-3", "ap-south-1", "ap-south-2", "ap-southeast-2",
 	// "ap-southeast-3", "ap-southeast-4", "ap-southeast-5", "ap-southeast-7",
@@ -67,7 +68,7 @@ type CloudZone struct {
 	// "ca-toronto", "de-frankfurt", "fr-gravelines", "fr-paris", "fr-roubaix",
 	// "fr-strasbourg", "gb-london", "in-mumbai", "pl-warsaw", "sg-singapore",
 	// "us-hillsboro", "us-vint_hill".
-	Region CloudZoneRegion `json:"region,required"`
+	Region CloudZoneRegion `json:"region" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Provider    respjson.Field
@@ -209,7 +210,7 @@ const (
 // The properties Provider, Region are required.
 type CloudZoneParam struct {
 	// Any of "aws", "gcp", "azure", "ovh".
-	Provider CloudZoneProvider `json:"provider,omitzero,required"`
+	Provider CloudZoneProvider `json:"provider,omitzero" api:"required"`
 	// Any of "af-south-1", "ap-east-1", "ap-northeast-1", "ap-northeast-2",
 	// "ap-northeast-3", "ap-south-1", "ap-south-2", "ap-southeast-2",
 	// "ap-southeast-3", "ap-southeast-4", "ap-southeast-5", "ap-southeast-7",
@@ -232,7 +233,7 @@ type CloudZoneParam struct {
 	// "ca-toronto", "de-frankfurt", "fr-gravelines", "fr-paris", "fr-roubaix",
 	// "fr-strasbourg", "gb-london", "in-mumbai", "pl-warsaw", "sg-singapore",
 	// "us-hillsboro", "us-vint_hill".
-	Region CloudZoneRegion `json:"region,omitzero,required"`
+	Region CloudZoneRegion `json:"region,omitzero" api:"required"`
 	paramObj
 }
 
@@ -245,9 +246,9 @@ func (r *CloudZoneParam) UnmarshalJSON(data []byte) error {
 }
 
 type ScheduleOption struct {
-	Co2Intensity float64   `json:"co2_intensity,required"`
-	Time         time.Time `json:"time,required" format:"date-time"`
-	Zone         CloudZone `json:"zone,required"`
+	Co2Intensity float64   `json:"co2_intensity" api:"required"`
+	Time         time.Time `json:"time" api:"required" format:"date-time"`
+	Zone         CloudZone `json:"zone" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		Co2Intensity respjson.Field
@@ -265,12 +266,12 @@ func (r *ScheduleOption) UnmarshalJSON(data []byte) error {
 }
 
 type ScheduleNewResponse struct {
-	CarbonSavings ScheduleNewResponseCarbonSavings `json:"carbon_savings,required"`
-	Ideal         ScheduleOption                   `json:"ideal,required"`
-	MedianCase    ScheduleOption                   `json:"median_case,required"`
-	NaiveCase     ScheduleOption                   `json:"naive_case,required"`
-	Options       []ScheduleOption                 `json:"options,required"`
-	WorstCase     ScheduleOption                   `json:"worst_case,required"`
+	CarbonSavings ScheduleNewResponseCarbonSavings `json:"carbon_savings" api:"required"`
+	Ideal         ScheduleOption                   `json:"ideal" api:"required"`
+	MedianCase    ScheduleOption                   `json:"median_case" api:"required"`
+	NaiveCase     ScheduleOption                   `json:"naive_case" api:"required"`
+	Options       []ScheduleOption                 `json:"options" api:"required"`
+	WorstCase     ScheduleOption                   `json:"worst_case" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		CarbonSavings respjson.Field
@@ -291,9 +292,9 @@ func (r *ScheduleNewResponse) UnmarshalJSON(data []byte) error {
 }
 
 type ScheduleNewResponseCarbonSavings struct {
-	VsMedianCase float64 `json:"vs_median_case,required"`
-	VsNaiveCase  float64 `json:"vs_naive_case,required"`
-	VsWorstCase  float64 `json:"vs_worst_case,required"`
+	VsMedianCase float64 `json:"vs_median_case" api:"required"`
+	VsNaiveCase  float64 `json:"vs_naive_case" api:"required"`
+	VsWorstCase  float64 `json:"vs_worst_case" api:"required"`
 	// JSON contains metadata for fields, check presence with [respjson.Field.Valid].
 	JSON struct {
 		VsMedianCase respjson.Field
@@ -311,10 +312,10 @@ func (r *ScheduleNewResponseCarbonSavings) UnmarshalJSON(data []byte) error {
 }
 
 type ScheduleNewParams struct {
-	Duration string `json:"duration,required" format:"duration"`
+	Duration string `json:"duration" api:"required" format:"duration"`
 	// List of time windows to schedule (start and end must be in the future)
-	Windows    []ScheduleNewParamsWindow `json:"windows,omitzero,required"`
-	Zones      []CloudZoneParam          `json:"zones,omitzero,required"`
+	Windows    []ScheduleNewParamsWindow `json:"windows,omitzero" api:"required"`
+	Zones      []CloudZoneParam          `json:"zones,omitzero" api:"required"`
 	NumOptions param.Opt[int64]          `json:"num_options,omitzero"`
 	paramObj
 }
@@ -329,8 +330,8 @@ func (r *ScheduleNewParams) UnmarshalJSON(data []byte) error {
 
 // The properties End, Start are required.
 type ScheduleNewParamsWindow struct {
-	End   time.Time `json:"end,required" format:"date-time"`
-	Start time.Time `json:"start,required" format:"date-time"`
+	End   time.Time `json:"end" api:"required" format:"date-time"`
+	Start time.Time `json:"start" api:"required" format:"date-time"`
 	paramObj
 }
 

@@ -37,7 +37,7 @@ func TestUserAgentHeader(t *testing.T) {
 			},
 		}),
 	)
-	client.Schedule.New(context.Background(), carbonaware.ScheduleNewParams{
+	_, _ = client.Schedule.New(context.Background(), carbonaware.ScheduleNewParams{
 		Duration: "PT1H",
 		Windows: []carbonaware.ScheduleNewParamsWindow{{
 			End:   time.Now(),
