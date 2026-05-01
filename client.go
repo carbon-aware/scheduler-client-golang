@@ -6,6 +6,8 @@ import (
 	"context"
 	"net/http"
 	"os"
+	"slices"
+	"strings"
 
 	"github.com/carbon-aware/scheduler-client-golang/internal/requestconfig"
 	"github.com/carbon-aware/scheduler-client-golang/option"
@@ -24,9 +26,17 @@ type Client struct {
 // DefaultClientOptions read from the environment (CARBONAWARE_SCHEDULER_BASE_URL).
 // This should be used to initialize new clients.
 func DefaultClientOptions() []option.RequestOption {
-	defaults := []option.RequestOption{option.WithEnvironmentProduction()}
+	defaults := []option.RequestOption{option.WithHTTPClient(defaultHTTPClient()), option.WithEnvironmentProduction()}
 	if o, ok := os.LookupEnv("CARBONAWARE_SCHEDULER_BASE_URL"); ok {
 		defaults = append(defaults, option.WithBaseURL(o))
+	}
+	if o, ok := os.LookupEnv("CARBONAWARE_SCHEDULER_CUSTOM_HEADERS"); ok {
+		for _, line := range strings.Split(o, "\n") {
+			colon := strings.Index(line, ":")
+			if colon >= 0 {
+				defaults = append(defaults, option.WithHeader(strings.TrimSpace(line[:colon]), strings.TrimSpace(line[colon+1:])))
+			}
+		}
 	}
 	return defaults
 }
@@ -79,7 +89,7 @@ func NewClient(opts ...option.RequestOption) (r Client) {
 // For even greater flexibility, see [option.WithResponseInto] and
 // [option.WithResponseBodyInto].
 func (r *Client) Execute(ctx context.Context, method string, path string, params any, res any, opts ...option.RequestOption) error {
-	opts = append(r.Options, opts...)
+	opts = slices.Concat(r.Options, opts)
 	return requestconfig.ExecuteNewRequest(ctx, method, path, params, res, opts...)
 }
 
@@ -118,8 +128,8 @@ func (r *Client) Delete(ctx context.Context, path string, params any, res any, o
 
 // Root
 func (r *Client) Get(ctx context.Context, opts ...option.RequestOption) (res *GetResponse, err error) {
-	opts = append(r.Options[:], opts...)
+	opts = slices.Concat(r.Options, opts)
 	path := ""
 	err = requestconfig.ExecuteNewRequest(ctx, http.MethodGet, path, nil, &res, opts...)
-	return
+	return res, err
 }

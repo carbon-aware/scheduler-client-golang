@@ -13,8 +13,8 @@ import (
 	"github.com/carbon-aware/scheduler-client-golang/option"
 )
 
-func TestCarbonawareGet(t *testing.T) {
-	t.Skip("skipped: tests are disabled for the time being")
+func TestGet(t *testing.T) {
+	t.Skip("Mock server tests are disabled")
 	baseURL := "http://localhost:4010"
 	if envURL, ok := os.LookupEnv("TEST_API_BASE_URL"); ok {
 		baseURL = envURL

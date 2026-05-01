@@ -1,6 +1,10 @@
 # Carbonaware Scheduler Go API Library
 
+<!-- x-release-please-start-version -->
+
 <a href="https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang"><img src="https://pkg.go.dev/badge/github.com/carbon-aware/scheduler-client-golang.svg" alt="Go Reference"></a>
+
+<!-- x-release-please-end -->
 
 The Carbonaware Scheduler Go library provides convenient access to the [Carbonaware Scheduler REST API](https://docs.carbonaware.dev/scheduler/)
 from applications written in Go.
@@ -24,14 +28,14 @@ Or to pin the version:
 <!-- x-release-please-start-version -->
 
 ```sh
-go get -u 'github.com/carbon-aware/scheduler-client-golang@v0.1.0-alpha.2'
+go get -u 'github.com/carbon-aware/scheduler-client-golang@v0.1.0-alpha.3'
 ```
 
 <!-- x-release-please-end -->
 
 ## Requirements
 
-This library requires Go 1.18+.
+This library requires Go 1.22+.
 
 ## Usage
 
@@ -74,7 +78,7 @@ func main() {
 The carbonaware library uses the [`omitzero`](https://tip.golang.org/doc/go1.24#encodingjsonpkgencodingjson)
 semantics from the Go 1.24+ `encoding/json` release for request fields.
 
-Required primitive fields (`int64`, `string`, etc.) feature the tag <code>\`json:"...,required"\`</code>. These
+Required primitive fields (`int64`, `string`, etc.) feature the tag <code>\`api:"required"\`</code>. These
 fields are always serialized, even their zero values.
 
 Optional primitive types are wrapped in a `param.Opt[T]`. These fields can be set with the provided constructors, `carbonaware.String(string)`, `carbonaware.Int(int64)`, etc.
@@ -129,7 +133,7 @@ custom := param.Override[carbonaware.FooParams](12)
 
 ### Request unions
 
-Unions are represented as a struct with fields prefixed by "Of" for each of it's variants,
+Unions are represented as a struct with fields prefixed by "Of" for each of its variants,
 only one field can be non-zero. The non-zero field will be serialized.
 
 Sub-properties of the union can be accessed via methods on the union struct.
@@ -277,6 +281,8 @@ client.Schedule.New(context.TODO(), ...,
 	option.WithJSONSet("some.json.path", map[string]string{"my": "object"}),
 )
 ```
+
+The request option `option.WithDebugLog(nil)` may be helpful while debugging.
 
 See the [full list of request options](https://pkg.go.dev/github.com/carbon-aware/scheduler-client-golang/option).
 
